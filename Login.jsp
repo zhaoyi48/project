@@ -27,7 +27,7 @@
 </head>
 <body style="background-image:url(img/Login_Background.jpg);background-size:cover">
 	<div id="Div_Form">
-		<form action="get">
+		<form action="post">
 			<table id="login">
 			<caption>请登录</caption>
 				<tr>
