@@ -15,7 +15,7 @@
 	{
 		document.getElementsByTagName("form")[0].submit();
 	}
-	//当窗口改变大小时
+	//当窗口改变大小时仍居中
 	window.onresize=function Login_Div_Center(){
 		var oDiv=document.getElementById("Div_Form");
 		var divWidth=oDiv.offsetWidth;
@@ -24,8 +24,54 @@
 		oDiv.style.top=((document.documentElement.clientHeight-divHeight)/2)+"px";
 	}
 </script>
+<script>
+	/* 
+		登录外框div框样式
+	*/
+	window.onload=function(){
+	var oDiv=document.getElementById("Div_Form");
+	oDiv.style.border="5px solid #ccc";
+	//上下左右居中
+	oDiv.style.position="absolute";
+	var oDiv=document.getElementById("Div_Form");
+	var divWidth=oDiv.offsetWidth;
+	var divHeight=oDiv.offsetHeight;
+	oDiv.style.left=((document.documentElement.clientWidth-divWidth)/2)+"px";
+	oDiv.style.top=((document.documentElement.clientHeight-divHeight)/2)+"px";
+	
+	/* 
+		设置表单样式
+		宽高
+	 */
+	var oTable=document.getElementsByTagName("table")[0];
+	var oTr=oTable.getElementsByTagName("tr");
+	//设置列宽和行高
+	for(var i=0;i<oTr.length;i++)
+	{
+		var oTd=oTr[i].getElementsByTagName("td");
+		for(var j=0;j<oTd.length;j++)
+			{
+			//设置列宽
+			switch(j)
+			{
+			case 0: oTd[j].style.width="70px";break;
+			case 1: oTd[j].style.width="150px";break;
+			case 2: oTd[j].style.width="100px";break;
+			}
+				oTd[j].style.height="30px";
+			}
+	}
+	document.onkeydown=function(event){
+	var e=event||window.event||arguments.callee.caller.arguments[0];
+	if(e&&e.keyCode==13)//按下enter提交
+		{
+			submitTable();	
+		}
+}
+	}
+</script>
 </head>
-<body style="background-image:url(img/Login_Background.jpg);background-size:cover">
+<body style="background:lightblue;background-size:cover">
 	<div id="Div_Form">
 		<form action="" method="post">
 			<table id="login">
@@ -53,54 +99,11 @@
 				</tr>
 				<tr>
 					<td></td>
-					<td><input type="submit" value="login" style="float:left"/> <input type="button" onclick="resetTable();" value="重置" style="float:right"/></td>
+					<td><input type="submit" value="登录" style="float:left"/> <input type="button" onclick="resetTable();" value="重置" style="float:right"/></td>
 				</tr>
 			</table>
 		</form>
 	</div>
 </body>
-<script>
-	/* 
-		登录外框DIV框样式
-	*/
 
-	load();
-	function load(){
-	var oDiv=document.getElementById("Div_Form");
-	/* oDiv.style.width="auto";
-	oDiv.style.height="auto"; */
-	oDiv.style.border="5px solid #ccc";
-	//上下左右居中
-	oDiv.style.position="absolute";
-	var oDiv=document.getElementById("Div_Form");
-	var divWidth=oDiv.offsetWidth;
-	var divHeight=oDiv.offsetHeight;
-	oDiv.style.left=((document.documentElement.clientWidth-divWidth)/2)+"px";
-	oDiv.style.top=((document.documentElement.clientHeight-divHeight)/2)+"px";
-	
-	/* 
-		设置表单样式
-		宽高
-	 */
-	var oTable=document.getElementsByTagName("table")[0];
-	var oTr=oTable.getElementsByTagName("tr");
-	
-	for(var i=0;i<oTr.length;i++)
-	{
-		var oTd=oTr[i].getElementsByTagName("td");
-		for(var j=0;j<oTd.length;j++)
-			{
-			//设置列宽
-			switch(j)
-			{
-			case 0: oTd[j].style.width="70px";break;
-			case 1: oTd[j].style.width="150px";break;
-			case 2: oTd[j].style.width="100px";break;
-			default:;
-			}
-				oTd[j].style.height="30px";
-			}
-	}
-}
-</script>
 </html>
