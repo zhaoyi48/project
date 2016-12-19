@@ -1,0 +1,81 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+<table>
+	<tr>
+		<td>用户ID</td>
+		<td></td>
+	</tr>
+	<tr>
+		<td>用户昵称</td>
+		<td></td>
+	</tr>
+	<tr>
+		<td>真实姓名</td>
+		<td></td>
+	</tr>
+	<tr>
+		<td>身份证号码</td>
+		<td></td>
+	</tr>
+	<tr>
+		<td>固定电话</td>
+		<td></td>
+	</tr>
+	<tr>
+		<td>手机</td>
+		<td></td>
+	</tr>
+	<tr>
+		<td>联系地址</td>
+		<td></td>
+	</tr>
+	<tr>
+		<td>email</td>
+		<td></td>
+	</tr>
+	<tr>
+		<td>买卖标识</td>
+		<td></td>
+	</tr>
+	<tr>
+		<td>买方信度</td>
+		<td></td>
+	</tr>
+	<tr>
+		<td>卖方信度</td>
+		<td></td>
+	</tr>
+	<tr>
+		<td>公司名</td>
+		<td></td>
+	</tr>
+	<tr>
+		<td>厂址</td>
+		<td></td>
+	</tr>
+	<tr>
+		<td>主营</td>
+		<td></td>
+	</tr>
+	<tr>
+		<td>法人代表</td>
+		<td></td>
+	</tr>
+	<tr>
+		<td>法人身份证</td>
+		<td></td>
+	</tr>
+	<tr>
+		<td>注册日期</td>
+		<td></td>
+	</tr>
+</table>
+</body>
+</html>
