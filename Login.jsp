@@ -29,10 +29,13 @@
 	<div id="Div_Form">
 		<form action="post">
 			<table id="login">
-			<caption>请登录</caption>
+			<caption style="font-size:20px">请登录</caption>
+				<tr>
+					<td>&nbsp</td>
+				</tr>
 				<tr>
 					<td>用户名:</td>
-					<td><input type="text" name=User/></td>
+					<td><input type="text" name=UserName/></td>
 					<td></td>
 				</tr>
 				<tr>
@@ -46,6 +49,7 @@
 				</tr>
 				<tr>
 					<td>验证码:</td>
+					<td><input type="text" name="VerifyCode"/></td>
 					<td><img src="radomImage.jsp" alt="验证码" style="width:70px; height:35px background:red" onclick="" style="display:block;position:absolute;right:30px;"/></td>
 					<td></td>
 				</tr>
