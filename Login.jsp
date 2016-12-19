@@ -27,7 +27,7 @@
 </head>
 <body style="background-image:url(img/Login_Background.jpg);background-size:cover">
 	<div id="Div_Form">
-		<form action="post">
+		<form action="" method="post">
 			<table id="login">
 			<caption style="font-size:20px">请登录</caption>
 				<tr>
@@ -36,22 +36,20 @@
 				<tr>
 					<td>用户名:</td>
 					<td><input type="text" name=UserName/></td>
-					<td></td>
 				</tr>
 				<tr>
 					<td>密码:</td>
 					<td><input type="text" name=Password/></td>
-					<td></td>
 				</tr>
 				<tr>
 					<td></td>
-					<td>管理员:<input type="radio" name="User" value="admin" checked /> 卖家:<input type="radio" name="User" value="seller"/> 买家:<input type="radio" name="User" value="buyer"/></td>
+					<td>管理员:<input type="radio" name="User" value="admin" checked /> 卖家:<input type="radio" name="User" value="seller"/></td>
+					<td>买家:<input type="radio" name="User" value="buyer"/></td>
 				</tr>
 				<tr>
 					<td>验证码:</td>
 					<td><input type="text" name="VerifyCode"/></td>
 					<td><img src="radomImage.jsp" alt="验证码" style="width:70px; height:35px background:red" onclick="" style="display:block;position:absolute;right:30px;"/></td>
-					<td></td>
 				</tr>
 				<tr>
 					<td></td>
@@ -85,22 +83,22 @@
 		宽高
 	 */
 	var oTable=document.getElementsByTagName("table")[0];
-	var oTr=document.getElementByTagName("tr");
+	var oTr=oTable.getElementsByTagName("tr");
 	
 	for(var i=0;i<oTr.length;i++)
 	{
 		var oTd=oTr[i].getElementsByTagName("td");
 		for(var j=0;j<oTd.length;j++)
 			{
-				if(j==0)
-					{
-						oTd.style.width="100px";	
-					}
-				else
-					{
-					oTd.style.width="0px";
-					}
-				oTd.style.height="30px";
+			//设置列宽
+			switch(j)
+			{
+			case 0: oTd[j].style.width="70px";break;
+			case 1: oTd[j].style.width="150px";break;
+			case 2: oTd[j].style.width="100px";break;
+			default:;
+			}
+				oTd[j].style.height="30px";
 			}
 	}
 }
