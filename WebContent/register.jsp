@@ -91,7 +91,7 @@
 		</tr>
 		<tr>
 			<td colspan="2">
-				<input type="submit" value="登陆" />
+				<input type="submit" value="注册" />
 			</td>
 		</tr>
 	</table>
