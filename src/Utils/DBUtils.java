@@ -29,13 +29,13 @@ public class DBUtils {
 	
 	public static Connection getConnection() throws SQLException {
 		try {
-			Class.forName("oracle.jdbc.driver.OracleDriver");
+			Class.forName("com.mysql.jdbc.Driver");
 		} 
 		catch (ClassNotFoundException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-		 Connection conn = DriverManager.getConnection("jdbc:oracle:thin:@localhost:1521:orcl","scott", "tiger");
+		 Connection conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/JSPdb","root", "dzy");
 		return conn;
 	}
 	
