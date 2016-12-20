@@ -5,12 +5,14 @@ public class User {
 	private String username;
 	private String password;
 	private String email;
+	private int access;
 	
-	public User(int userid,String username,String password,String email){
+	public User(int userid,String username,String password,String email,int access){
 		this.userid = userid;
 		this.username = username;
 		this.password = password;
 		this.email = email;
+		this.access = access;
 	}
 	
 	public User(){
@@ -40,6 +42,14 @@ public class User {
 	}
 	public void setEmail(String email) {
 		this.email = email;
+	}
+
+	public int getAccess() {
+		return access;
+	}
+
+	public void setAccess(int access) {
+		this.access = access;
 	}
 	
 	

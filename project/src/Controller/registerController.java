@@ -45,7 +45,8 @@ public class registerController extends HttpServlet {
 		String name=req.getParameter("username");
 		String email=req.getParameter("email");
 		String password=req.getParameter("password");
-		User user = new User(id,name,password,email);
+		int access=Integer.parseInt(req.getParameter("access"));
+		User user = new User(id,name,password,email,access);
 		UserModel userModel = new UserModel();
 		userModel.add(user);
 		req.getRequestDispatcher("login.jsp").forward(req,resp);

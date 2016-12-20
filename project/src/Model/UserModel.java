@@ -58,13 +58,14 @@ public class UserModel {
 				System.out.println("conn null");
 			}
 
-			sql = "insert into users(userid,username,password,email) values(?,?,?,?)";
+			sql = "insert into T_USERS(T_USERID,T_NAME,T_USERPASS,T_MAIL,T_ACCESS) values(?,?,?,?,?)";
 
 			pstmt = conn.prepareStatement(sql);
 			pstmt.setInt(1, user.getUserid());
 			pstmt.setString(2, user.getUsername());
 			pstmt.setString(3, user.getPassword());
 			pstmt.setString(4, user.getEmail());
+			pstmt.setInt(4, user.getAccess());
 
 			int count = pstmt.executeUpdate();
 			if (count > 0) {
@@ -101,7 +102,7 @@ public class UserModel {
 			while (rs.next()) {
 				rowCount++;	
 			}
-			return rowCount++;
+			return rowCount+1;
 		} 
 		catch (SQLException e) {
 			// TODO Auto-generated catch block
