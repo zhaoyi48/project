@@ -49,10 +49,10 @@ public class productController extends HttpServlet {
 		product.setPclass(req.getParameter("class"));
 		ProductModel productModel=new ProductModel();
 		if(productModel.add(product)){
-			
+			System.out.println("success");
 		}
 		else{
-			
+			System.out.println("error product add");
 		}
 	}
 	
