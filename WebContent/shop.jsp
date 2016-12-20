@@ -27,7 +27,7 @@
 		</tr>
 		<tr>
 			<td>商品费用</td>
-			<td><input type="text" name="pprice" /></td>
+			<td><input type="text" name="psprice" /></td>
 		</tr>
 		<tr>
 			<td>附加费</td>
