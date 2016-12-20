@@ -19,7 +19,7 @@ public class UserModel {
 		try {
 
 			conn = DBUtils.getConnection();
-			String sql = "select * from T_USERS where T_USERID='"+ user.getUsername() + "'";
+			String sql = "select * from T_USERS where T_USERID='"+ user.getUserid() + "'";
 			pstmt = conn.prepareStatement(sql);
 
 			rs = pstmt.executeQuery();

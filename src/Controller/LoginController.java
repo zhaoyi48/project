@@ -62,6 +62,7 @@ public class LoginController extends HttpServlet {
 		// TODO Auto-generated method stub
 		User user = new User();
 		user.setUserid(Integer.parseInt(req.getParameter("userid")));
+		System.out.println(user.getUserid());
 		user.setPassword(req.getParameter("password"));
 		UserModel userModel = new UserModel();
 		int access=userModel.checkUser(user);

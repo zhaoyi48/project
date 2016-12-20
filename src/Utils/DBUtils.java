@@ -35,7 +35,7 @@ public class DBUtils {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-		 Connection conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/JSPdb","root", "dzy");
+		 Connection conn = DriverManager.getConnection("jdbc:mysql://192.168.158.1:3306/test","root", "12343-a");
 		return conn;
 	}
 	
