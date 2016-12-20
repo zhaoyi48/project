@@ -68,7 +68,7 @@ public class LoginController extends HttpServlet {
 		if (access!=-1) {
 			req.getSession().setAttribute("userid", user.getUserid());
 			req.getSession().setAttribute("access", access);
-			req.getRequestDispatcher("index.jsp").forward(req,resp);
+			req.getRequestDispatcher("commodity.jsp").forward(req,resp);
 		} 
 		else {
 			req.setAttribute("msg", "error");
