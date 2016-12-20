@@ -10,6 +10,7 @@ import javax.servlet.http.HttpServletResponse;
 
 import Model.Product;
 import Model.ProductModel;
+import Model.ShopItem;
 
 /**
  * Servlet implementation class productController
@@ -33,10 +34,21 @@ public class productController extends HttpServlet {
 			if ("add".equals(method)) {
 				this.add(req, resp);
 			}
+			else if("buy".equals(method)){
+				this.buy(req, resp);
+			}
 		} 
 		catch (Exception e) {
 			e.printStackTrace();
 		}
+	}
+
+	private void buy(HttpServletRequest req, HttpServletResponse resp) {
+		// TODO Auto-generated method stub
+		ShopItem item=new ShopItem();
+		item.setNum(Integer.parseInt(req.getParameter("pnum")));
+		item.setPrice(Double.parseDouble(req.getParameter("pprice")));
+		item.setProductid(req.getParameter("pid"));
 	}
 
 	private void add(HttpServletRequest req, HttpServletResponse resp) {
