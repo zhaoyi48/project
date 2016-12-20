@@ -39,7 +39,7 @@ public class registerController extends HttpServlet {
 		}
 	}
 
-	private void register(HttpServletRequest req, HttpServletResponse resp) {
+	private void register(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		// TODO Auto-generated method stub
 		int id=Integer.parseInt(req.getParameter("userid"));
 		String name=req.getParameter("username");
@@ -48,6 +48,7 @@ public class registerController extends HttpServlet {
 		User user = new User(id,name,password,email);
 		UserModel userModel = new UserModel();
 		userModel.add(user);
+		req.getRequestDispatcher("login.jsp").forward(req,resp);
 	}
 
 }
