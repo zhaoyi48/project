@@ -1,0 +1,16 @@
+#rightDiv{
+		float: right;
+		width: 70%;
+	}
+#leftDiv{
+		float: left;
+		width: 30%;
+	}
+li{
+	list-style: none;
+	height: 60px;
+	width: 100px;
+}
+ul{
+	height: 200px;
+}
