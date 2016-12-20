@@ -1,6 +1,9 @@
 package Controller;
 
 import java.io.IOException;
+import java.util.HashSet;
+import java.util.Map;
+import java.util.Set;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -41,6 +44,19 @@ public class registerController extends HttpServlet {
 
 	private void register(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		// TODO Auto-generated method stub
+		Map<String, String[]> form=req.getParameterMap();
+		String[] str={"userid","password","username","password1",
+					"name","company","id","adress","work",
+					"mphone","credit","adress1","rsph","rspid"};
+		Set<String> set=new HashSet<String>();
+		for(int i=0;i<str.length;i++){
+			set.add(str[i]);
+		}
+		/*for (String key : form.keySet()) {
+			if(form.get(key)[0]==null&&set.contains(key)){
+				req.getRequestDispatcher("register.jsp").forward(req,resp);
+			}
+		}*/
 		int id=Integer.parseInt(req.getParameter("userid"));
 		String name=req.getParameter("username");
 		String email=req.getParameter("email");
@@ -48,8 +64,9 @@ public class registerController extends HttpServlet {
 		int access=Integer.parseInt(req.getParameter("access"));
 		User user = new User(id,name,password,email,access);
 		UserModel userModel = new UserModel();
-		userModel.add(user);
-		req.getRequestDispatcher("login.jsp").forward(req,resp);
+		if(userModel.add(user)){
+			req.getRequestDispatcher("login.jsp").forward(req,resp);
+		}
 	}
 
 }

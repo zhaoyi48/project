@@ -40,7 +40,7 @@
 			<td><input type="password" name="password1" /></td>
 		</tr>
 		<tr>
-			<td>用户昵称</td>
+			<td>真实姓名</td>
 			<td><input type="text" name="name" /></td>
 			<td>公司名</td>
 			<td><input type="text" name="company" /></td>
@@ -79,9 +79,9 @@
 			<td>买卖标识</td>
 			<td>
 			<select name="access">
-				<option value=”2“>买卖都有</option>
-				<option value=”0“>仅买</option>
-				<option value=”1“>仅卖</option>
+				<option value="2">买卖都有</option>
+				<option value="0">仅买</option>
+				<option value="1">仅卖</option>
 			</select>
 			</td>
 		</tr>

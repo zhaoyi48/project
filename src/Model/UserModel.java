@@ -60,7 +60,7 @@ public class UserModel {
 			pstmt.setString(2, user.getUsername());
 			pstmt.setString(3, user.getPassword());
 			pstmt.setString(4, user.getEmail());
-			pstmt.setInt(4, user.getAccess());
+			pstmt.setInt(5, user.getAccess());
 
 			int count = pstmt.executeUpdate();
 			if (count > 0) {
