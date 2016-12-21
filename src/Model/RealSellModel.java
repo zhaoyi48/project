@@ -10,8 +10,8 @@ import java.util.List;
 
 import Utils.DBUtils;
 
-public class TalkModel {
-	public boolean add(Talk talk) {
+public class RealSellModel  {
+	public boolean add( RealSell items) {
 		boolean flag = false;
 		Connection conn = null;
 		PreparedStatement pstmt = null;
@@ -22,30 +22,29 @@ public class TalkModel {
 				System.out.println("conn null");
 			}
 
-			sql = "insert into T_TALK(T_SENDER,T_ACCEPTER,T_TALKCONTENT) values(?,?,?)";
+			sql = "insert into T_REALSELL(T_PRODUCTID,T_BUYNUM,T_BUYUSERID,T_SELLUSERID) values(?,?,?)";
 
 			pstmt = conn.prepareStatement(sql);
-			pstmt.setInt(1, talk.getSend());
-			pstmt.setInt(2, talk.getReceive());
-			pstmt.setString(3, talk.getText());
+			pstmt.setString(1, items.getPid());
+			pstmt.setInt(2, items.getBuynum());
+			pstmt.setString(3, items.getBuyuserid());
+			pstmt.setString(4, items.getSelluserid());
+			
 
 			int count = pstmt.executeUpdate();
 			if (count > 0) {
 				flag = true;
 			}
 
-		} 
-		catch (SQLException e) {
+		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
-		} 
-		finally {
+		} finally {
 			DBUtils.release(pstmt, conn);
 		}
 		return flag;
 	}
 
-	@SuppressWarnings({ "rawtypes", "unchecked" })
 	public List list() throws IllegalAccessException, InvocationTargetException {
 		// TODO Auto-generated method stub
 		List list = new ArrayList();
@@ -60,18 +59,20 @@ public class TalkModel {
 				System.out.println("conn null");
 			}
 			// 数据保存 参数user对象中
-			sql = "select * from T_TALK";
+			sql = "select * from  T_REALSELL";
 			pstmt = conn.prepareStatement(sql);
 
 			rs = pstmt.executeQuery();
-			
+
 			while (rs.next()) {
-				Talk talk=new Talk();
-				talk.setSend(rs.getInt("T_SENDER"));
-				talk.setReceive(rs.getInt("T_ACCEPTER"));
-				talk.setText(rs.getString("T_TALKCONTENT"));
-			
-				list.add(talk);
+				 RealSell realsell = new  RealSell();
+
+				 realsell.setPid(rs.getString("T_PRODUCTID"));
+				 realsell.setBuynum(rs.getInt("T_BUYNUM"));
+				 realsell.setBuyuserid(rs.getString("T_BUYUSERID"));
+				 realsell.setSelluserid(rs.getString("T_SELLUSERID"));
+
+				list.add(realsell);
 			}
 
 		} catch (SQLException e) {

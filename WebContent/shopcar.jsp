@@ -1,5 +1,10 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+    <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+	<%
+String path = request.getContextPath();
+String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.getServerPort()+path+"/";
+%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
@@ -28,7 +33,7 @@
 <div id="leftDiv">
 	<ul>
 		<li><a href="commodity.jsp">商品一览</a></li>
-		<li><a href="shopcar.jsp">购物车</a></li>
+		<li><a href="ShopController?method=list">购物车</a></li>
 		<li><a href="realbuy.jsp">已购商品</a></li>
 		<li><a href="talk.jsp">聊天记录</a></li>
 		<li><a href="products.jsp">商品发布</a></li>
@@ -36,6 +41,26 @@
 		<li><a href="vindicate.jsp">信息维护</a></li>
 	</ul>
 </div>
-<div id="rightDiv"></div>
+<div id="rightDiv">
+	<table border="2">
+  	<tr>
+  		<th>T_PRODUCTID</th>
+  		  		<th>T_NUM</th>
+  		<th>T_PRICE</th>
+
+  		<th>Buy</th>
+  	</tr>
+  
+	  <c:forEach var="item"  items="${list}">
+	  	<tr>
+	  		<td>${item.productid }</td>
+	  		<td>${item.num }</td>
+	  		<td>${item.price }</td>
+	  		<td><a href="<%=path %>/ShopController?method=add&productid=${item.productid }">Buy</a><br/></td>
+	  	</tr>	
+	  </c:forEach>
+  
+  </table>
+</div>
 </body>
 </html>

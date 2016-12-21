@@ -1,6 +1,9 @@
 package Controller;
 
+
 import java.io.IOException;
+import java.lang.reflect.InvocationTargetException;
+import java.util.List;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -27,6 +30,9 @@ public class ShopController extends HttpServlet {
 			if ("add".equals(method)) {
 				this.add(req, resp);
 			}
+			else if("list".equals(method)){
+				this.doGet(req, resp);
+			}
 		} 
 		catch (Exception e) {
 			e.printStackTrace();
@@ -47,11 +53,28 @@ public class ShopController extends HttpServlet {
 			System.out.println("error product add");
 		}
 	}
+private void list(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException, IllegalAccessException, InvocationTargetException {
+		// TODO Auto-generated method stub
+		@SuppressWarnings("rawtypes")
+		List list = new ShopModel().list();
+		req.setAttribute("list", list);
+		req.getRequestDispatcher("shopcar.jsp").forward(req,resp);
+	}
 
 	@Override
 	public void init() throws ServletException {
 		// TODO Auto-generated method stub
 		super.init();
+	}
+
+	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+		// TODO Auto-generated method stub
+		try {
+			this.list(req, resp);
+		} catch (IllegalAccessException | InvocationTargetException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 	}
 	
 }

@@ -1,6 +1,8 @@
 package Controller;
 
 import java.io.IOException;
+import java.lang.reflect.InvocationTargetException;
+import java.util.List;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -27,6 +29,9 @@ public class TalkController extends HttpServlet {
 			if ("add".equals(method)) {
 				this.add(req, resp);
 			}
+			else if("list".equals(method)){
+				this.doGet(req, resp);
+			}
 		} 
 		catch (Exception e) {
 			e.printStackTrace();
@@ -51,6 +56,25 @@ public class TalkController extends HttpServlet {
 		}
 		else{
 			System.out.println("error talk add");
+		}
+	}
+
+	private void list(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException, IllegalAccessException, InvocationTargetException {
+		// TODO Auto-generated method stub
+		@SuppressWarnings("rawtypes")
+		List list = new TalkModel().list();
+		req.setAttribute("list", list);
+		req.getRequestDispatcher("talk.jsp").forward(req,resp);
+	}
+
+	@Override
+	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+		// TODO Auto-generated method stub
+		try {
+			this.list(req, resp);
+		} catch (IllegalAccessException | InvocationTargetException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
 		}
 	}
 }

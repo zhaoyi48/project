@@ -44,16 +44,17 @@ public class registerController extends HttpServlet {
 
 	private void register(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		// TODO Auto-generated method stub
-		Map<String, String[]> form=req.getParameterMap();
-		String[] str={"userid","password","username","password1",
-					"name","company","id","adress","work",
-					"mphone","credit","adress1","rsph","rspid"};
-		Set<String> set=new HashSet<String>();
-		for(int i=0;i<str.length;i++){
+		Map<String, String[]>  form = req.getParameterMap();
+		String[] str = {"userid","password","username","password1","name","company","id","adress","phone","work","mphone","credit","adress1","rsph","email","rspid"};
+		
+		Set set = new HashSet();
+		for(int i = 0;i < str.length; i++)
+		{
 			set.add(str[i]);
 		}
-		/*for (String key : form.keySet()) {
-			if(form.get(key)[0]==null&&set.contains(key)){
+	/*	for (String  key :form.keySet()) {
+			if(form.get(key) == null && set.contains(key))
+			{
 				req.getRequestDispatcher("register.jsp").forward(req,resp);
 			}
 		}*/
@@ -65,7 +66,7 @@ public class registerController extends HttpServlet {
 		User user = new User(id,name,password,email,access);
 		UserModel userModel = new UserModel();
 		if(userModel.add(user)){
-			req.getRequestDispatcher("login.jsp").forward(req,resp);
+		req.getRequestDispatcher("login.jsp").forward(req,resp);
 		}
 	}
 

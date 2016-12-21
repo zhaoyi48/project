@@ -1,12 +1,15 @@
 package Controller;
 
 import java.io.IOException;
+import java.lang.reflect.InvocationTargetException;
+import java.util.List;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+
 
 import Model.Product;
 import Model.ProductModel;
@@ -33,10 +36,21 @@ public class productController extends HttpServlet {
 			if ("add".equals(method)) {
 				this.add(req, resp);
 			}
+			else if("list".equals(method)){
+				this.doGet(req, resp);
+			}
 		} 
 		catch (Exception e) {
 			e.printStackTrace();
 		}
+	}
+
+	private void list(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException, IllegalAccessException, InvocationTargetException {
+		// TODO Auto-generated method stub
+		@SuppressWarnings("rawtypes")
+		List list = new ProductModel().list();
+		req.setAttribute("list", list);
+		req.getRequestDispatcher("commodity.jsp").forward(req,resp);
 	}
 
 	private void add(HttpServletRequest req, HttpServletResponse resp) {
@@ -53,6 +67,17 @@ public class productController extends HttpServlet {
 		}
 		else{
 			System.out.println("error product add");
+		}
+	}
+
+	@Override
+	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+		// TODO Auto-generated method stub
+		try {
+			this.list(req, resp);
+		} catch (IllegalAccessException | InvocationTargetException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
 		}
 	}
 	

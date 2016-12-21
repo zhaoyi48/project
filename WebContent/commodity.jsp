@@ -1,5 +1,10 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8" import="Model.search"%>
+	<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+	<%
+String path = request.getContextPath();
+String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.getServerPort()+path+"/";
+%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
@@ -27,7 +32,7 @@
 	</div>
 	<div id="leftDiv">
 		<ul>
-			<li><a href="commodity.jsp">商品一览</a></li>
+			<li><a href="productController?method=list">商品一览</a></li>
 			<li><a href="shopcar.jsp">购物车</a></li>
 			<li><a href="realbuy.jsp">已购商品</a></li>
 			<li><a href="talk.jsp">聊天记录</a></li>
@@ -37,25 +42,26 @@
 		</ul>
 	</div>
 	<div id="rightDiv">
-		<table>
-			<tr>
-				<td>商品名</td>
-				<td><input type="text" name="search"></td>
-				<td><input type="button" name="button" value="查询"></td>
-			</tr>
-			<tr>
-				<td>商品编号</td>
-				<td>商品名</td>
-				<td>单价</td>
-				<td>现存数量</td>
-				<td>卖家</td>
-				<td>邮费</td>
-			</tr>
-			<%
-			search test=new search();
-			test.getProduct(request, response);
-			%>
-		</table>
+	<table border="2">
+  	<tr>
+  		<th>T_PRODUCTID</th>
+  		<th>T_PRODUCTNAME</th>
+  		<th>T_PRICE</th>
+  		<th>T_NUM</th>
+  		<th>Buy</th>
+  	</tr>
+  
+	  <c:forEach var="product"  items="${list}">
+	  	<tr>
+	  		<td>${product.pid }</td>
+	  		<td>${product.pname }</td>
+	  		<td>${product.num }</td>
+	  		<td>${product.pprice }</td>
+	  		<td><a href="<%=path %>/ShopController?method=add&productid=${product.pid }">Buy</a><br/></td>
+	  	</tr>	
+	  </c:forEach>
+  
+  </table>
 	</div>
 </body>
 </html>
