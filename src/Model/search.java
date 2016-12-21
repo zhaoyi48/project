@@ -1,14 +1,20 @@
 package Model;
 
+import java.io.IOException;
+import java.io.PrintWriter;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.sql.ResultSetMetaData;
 import java.sql.SQLException;
+
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 
 import Utils.DBUtils;
 
 public class search {
-	public ResultSet getProduct() {
+	public void getProduct(HttpServletRequest req, HttpServletResponse resp) throws IOException {
 		Connection conn = null;
 		PreparedStatement pstmt = null;
 		ResultSet rs = null;
@@ -21,9 +27,12 @@ public class search {
 			sql="select (T_PRODUCTID,T_PRODUCTNAME,T_PRICE,T_NUM,T_SELLUSERID,T_POSTAGE) from T_PRODUCT where T_PRODUCTNAME='"+ "" + "'";
 			System.out.println(sql);
 			pstmt = conn.prepareStatement(sql);
-
+			
 			rs = pstmt.executeQuery();
-			return rs;
+			PrintWriter writer=resp.getWriter();
+			while(rs.next()){
+				writer.println("test");
+			}
 		} 
 		catch (SQLException e) {
 			// TODO Auto-generated catch block
@@ -32,6 +41,5 @@ public class search {
 		finally {
 			DBUtils.release(pstmt, conn);
 		}
-		return null;
 	}
 }

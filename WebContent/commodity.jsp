@@ -1,5 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-	pageEncoding="UTF-8" import="java.sql.ResultSet" import="Model.search"%>
+	pageEncoding="UTF-8" import="Model.search"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
@@ -51,23 +51,10 @@
 				<td>卖家</td>
 				<td>邮费</td>
 			</tr>
-			<tr>
-				<%
-					ResultSet rs = null;
-					try {
-						search a = new search();
-						rs = a.getProduct();
-						int row = rs.getRow();
-						int i = 0;
-						while (rs.next() && i < 5) {
-							out.write("<td>" + rs.getString("T_PRODUCTID") + "</td>");
-							i++;
-						}
-					} catch (Exception ex) {
-						out.write("error");
-					}
-				%>
-			</tr>
+			<%
+			search test=new search();
+			test.getProduct(request, response);
+			%>
 		</table>
 	</div>
 </body>
